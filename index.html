@@ -21,6 +21,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#mehendi">Invitations</a></li>
+                <li><a href="#memories">Memories</a></li>
             </ul>
         </div>
     </nav>
@@ -102,7 +103,45 @@
                 </div>
             </div>
         </section>
+        <section class="memories-section section" id="memories">
+            <div class="memories-content">
+                <h2 class="memories-title">Memories</h2>
+                <div class="memories-grid" role="list">
+                    <figure class="memory-card" role="listitem" data-memory-card>
+                        <div class="memory-image">
+                            <img src="images/gallery/pic1.jpg" alt="Snehal applying mehendi">
+                        </div>
+                    </figure>
+                    <figure class="memory-card" role="listitem" data-memory-card>
+                        <div class="memory-image">
+                            <img src="images/gallery/pic2.jpg" alt="Karthik playing dhol">
+                        </div>
+                    </figure>
+                    <figure class="memory-card" role="listitem" data-memory-card>
+                        <div class="memory-image">
+                            <img src="images/gallery/pic3.jpg" alt="Snehal and Karthik under lights">
+                        </div>
+                    </figure>
+                    <figure class="memory-card" role="listitem" data-memory-card>
+                        <div class="memory-image">
+                            <img src="images/gallery/pic4.jpg" alt="Friends celebrating together">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </section>
     </main>
+    <svg class="memories-filter" aria-hidden="true" focusable="false">
+        <filter id="wavy2">
+            <feturbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"></feturbulence>
+            <feDisplacementMap in="SourceGraphic" scale="7" />
+        </filter>
+    </svg>
+    <script>
+        history.scrollRestoration = "manual";
+        window.onbeforeunload = () => document.querySelector('.page-wrapper').scrollTop = 0;
+    </script>
     <script src="js/navigation.js"></script>
+    <script src="js/memories.js"></script>
 </body>
 </html>

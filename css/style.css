@@ -90,6 +90,80 @@ body {
     max-height: 100%;
 }
 
+/* Memories collage styles — start */
+.memories-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: min(94vw, 640px);
+}
+
+.memories-title {
+    font-size: 50px;
+    line-height: 54px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.memories-grid {
+    display: grid;
+    width: 100%;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    justify-items: center;
+}
+
+.memory-card {
+    position: relative;
+    display: block;
+    width: clamp(140px, 28vw, 180px);
+    aspect-ratio: 3 / 4;
+    --memory-frame: 12px;
+    --memory-radius: 18px;
+    --memory-tilt: 0deg;
+    --memory-shift-x: 0px;
+    --memory-shift-y: 0px;
+    transform-origin: center;
+    transform: translate(var(--memory-shift-x), var(--memory-shift-y)) rotate(var(--memory-tilt));
+    transition: transform 0.3s ease;
+}
+
+.memory-card:focus-within,
+.memory-card:hover {
+    transform: translate(var(--memory-shift-x), var(--memory-shift-y)) rotate(var(--memory-tilt)) scale(1.02);
+}
+
+.memory-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--memory-radius);
+    border: var(--memory-frame) solid #fff;
+    background: transparent;
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.2), -4px -4px 14px rgba(255, 255, 255, 0.8);
+    filter: url(#wavy2);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.memory-image {
+    position: absolute;
+    inset: calc(var(--memory-frame) * 0.65);
+    border-radius: calc(var(--memory-radius) - var(--memory-frame) * 0.75);
+    overflow: hidden;
+    z-index: 1;
+    left: 2px;
+    top: 2px;
+}
+
+.memory-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Memories collage styles — end */
+
 .home-background-image {
     position: fixed;
     inset: 0;
@@ -144,6 +218,24 @@ body {
         font-size: 22px;
         line-height: 28px;
     }
+
+    .memories-title {
+        font-size: 46px;
+        line-height: 48px;
+    }
+
+    .memories-content {
+        gap: 28px;
+    }
+
+    .memories-grid {
+        gap: 20px;
+    }
+
+    .memory-card {
+        width: clamp(130px, 34vw, 170px);
+        --memory-frame: 0px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -168,6 +260,25 @@ body {
     .home-quote {
         font-size: 20px;
         line-height: 26px;
+    }
+
+    .memories-title {
+        font-size: 42px;
+        line-height: 44px;
+    }
+
+    .memories-content {
+        gap: 24px;
+    }
+
+    .memories-grid {
+        gap: 18px;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+
+    .memory-card {
+        width: clamp(120px, 42vw, 150px);
+        --memory-frame: 6px;
     }
 }
 
