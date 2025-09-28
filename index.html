@@ -11,9 +11,22 @@
     <link rel="stylesheet" href="css/countdown-style.css">
 </head>
 <body>
-    <img class="home-background-image" src="images/background-alt.jpg" alt="background">
+    <nav class="site-nav" role="navigation">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+            <span class="nav-trigger-bar"></span>
+            <span class="nav-trigger-bar"></span>
+            <span class="nav-trigger-bar"></span>
+        </button>
+        <div id="nav-menu" class="nav-sheet" hidden>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mehendi">Invitations</a></li>
+            </ul>
+        </div>
+    </nav>
+    <img class="home-background-image" src="images/background.jpg" alt="background">
     <main class="page-wrapper">
-        <section class="home-section section">
+        <section class="home-section section" id="home">
             <div class="home-content">
                 <div class="home-title">Snehal & Karthik</div>
                 <img class="home-center-image" src="images/Misc/heart.png" alt="couple">
@@ -25,7 +38,7 @@
                 <div class="home-quote">Love is not an emotion,<br/>but a deep and pure expression of the soul”<br/>- Bhagavad Gita 2 .64</div>
             </div>
         </section>
-        <section class="invitation-section section">
+        <section class="invitation-section section" id="mehendi">
             <div class="invitation-content">
                 <h2 class="invitation-title">Mehendi</h2>
                 <div class="invitation-frame">
@@ -49,7 +62,7 @@
                 </div>
             </div>
         </section>
-        <section class="invitation-section section">
+        <section class="invitation-section section" id="haldi">
             <div class="invitation-content">
                 <h2 class="invitation-title">Haldi</h2>
                 <div class="invitation-frame">
@@ -67,7 +80,7 @@
         </section>
         <section class="invitation-section section">
             <div class="invitation-content">
-                <h2 class="invitation-title">Kashi Yatra</h2>
+                <h2 class="invitation-title">Kashi&nbsp;Yatra</h2>
                 <div class="invitation-frame">
                     <img src="images/invitation/pic6.png" alt="Invitation page 6">
                 </div>
@@ -90,5 +103,6 @@
             </div>
         </section>
     </main>
+    <script src="js/navigation.js"></script>
 </body>
 </html>
