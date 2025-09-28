@@ -79,6 +79,7 @@ body {
     line-height: 64px;
     margin-bottom: 40px;
     font-weight: 400;
+    padding-top: 45px;
 }
 
 .invitation-title {
@@ -93,6 +94,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    margin-top: -40px;
     border-width: 10px;
     border-style: solid;
     border-color: #2F2D2D #434040 #4F4C4C #434040;
