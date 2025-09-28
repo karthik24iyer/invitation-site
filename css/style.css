@@ -1,39 +1,69 @@
 /* CSS Custom Properties for viewport units */
 :root {
-    --vh: 1vh; /* Set by viewport-fix.js for mobile compatibility */
+    /* Fallback viewport height for older browsers */
+    --vh: 1vh;
+    /* Dynamic viewport height (includes browser UI changes) */
+    --dvh: 1dvh;
+    /* Small viewport height (excludes browser UI) */
+    --svh: 1svh;
+    /* Large viewport height (includes browser UI) */
+    --lvh: 1lvh;
 }
+
+/* Set viewport height custom property via JavaScript for fallback */
 body, html {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Seaweed Script', cursive;
+    /* Prevent horizontal scroll issues */
+    overflow-x: hidden;
 }
 
 body {
     overflow: hidden;
+    /* iOS Safari fix for momentum scrolling */
+    -webkit-overflow-scrolling: touch;
 }
 
 .page-wrapper {
     position: relative;
-    height: 100vh;
-    height: calc(var(--vh) * 100);
+    /* Use dynamic viewport height with fallbacks */
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height for modern browsers */
+    height: calc(var(--vh) * 100); /* JavaScript fallback */
     overflow-y: auto;
+    /* Restore basic scroll functionality as fallback */
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     z-index: 1;
+    /* Better scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
 }
 
 .section {
-    min-height: 100vh;
-    min-height: calc(var(--vh) * 100);
+    /* Use dynamic viewport height with fallbacks */
+    min-height: 100vh; /* Fallback */
+    min-height: 100dvh; /* Dynamic viewport height */
+    min-height: calc(var(--vh) * 100); /* JavaScript fallback */
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height */
+    height: calc(var(--vh) * 100); /* JavaScript fallback */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 40px 16px;
+    /* Restore CSS scroll-snap as fallback */
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    /* Ensure sections take full viewport */
+    box-sizing: border-box;
+    position: relative;
+    /* Better rendering on mobile */
+    will-change: transform;
 }
 
 .invitation-content {
@@ -72,7 +102,13 @@ body {
     position: relative;
     overflow: hidden;
     max-width: min(90vw, 960px);
-    max-height: min(calc(var(--vh) * 75), 960px);
+    /* Use dynamic viewport height with fallbacks for more consistent behavior */
+    max-height: min(75vh, 960px); /* Fallback */
+    max-height: min(75dvh, 960px); /* Dynamic viewport height */
+    max-height: min(calc(var(--vh) * 75), 960px); /* JavaScript fallback */
+    /* Better mobile rendering */
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .invitation-frame::before {
@@ -211,6 +247,54 @@ body {
     line-height: 30px;
 }
 
+/* Mobile-specific fixes */
+@supports not (height: 100dvh) {
+    /* Fallback for browsers without dynamic viewport support */
+    .page-wrapper {
+        height: calc(var(--vh) * 100);
+    }
+
+    .section {
+        min-height: calc(var(--vh) * 100);
+        height: calc(var(--vh) * 100);
+    }
+
+    .invitation-frame {
+        max-height: min(calc(var(--vh) * 75), 960px);
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .page-wrapper {
+        /* Fix for iOS viewport height issues */
+        min-height: -webkit-fill-available;
+        height: -webkit-fill-available;
+    }
+
+    .section {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) {
+    .page-wrapper {
+        /* Improve scroll performance on touch devices */
+        scroll-behavior: auto;
+        overscroll-behavior-y: none;
+    }
+
+    .section {
+        /* Reduce layout shifts on touch */
+        contain: layout style;
+    }
+
+    .invitation-frame {
+        /* Better touch performance */
+        transform: translate3d(0, 0, 0);
+    }
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -288,6 +372,29 @@ body {
         --memory-frame: 6px;
     }
 
+    /* Additional mobile optimizations */
+    .invitation-frame {
+        /* Ensure better fit on small screens */
+        max-width: 95vw;
+        max-height: min(70vh, 70dvh, calc(var(--vh) * 70));
+        padding: 8px;
+    }
+
+    .section {
+        /* Reduce padding on very small screens */
+        padding: 20px 12px;
+    }
+}
+
+/* Landscape mobile specific */
+@media (max-width: 768px) and (orientation: landscape) {
+    .invitation-frame {
+        max-height: min(80vh, 80dvh, calc(var(--vh) * 80));
+    }
+
+    .section {
+        padding: 20px 16px;
+    }
 }
 
 
@@ -301,6 +408,9 @@ body {
   gap: 8px;
   z-index: 2000;
   pointer-events: none;
+  /* Fix for iOS safe area */
+  top: max(16px, env(safe-area-inset-top, 16px));
+  right: max(16px, env(safe-area-inset-right, 16px));
 }
 
 .nav-trigger {
