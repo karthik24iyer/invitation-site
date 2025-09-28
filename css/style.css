@@ -313,12 +313,16 @@ body {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   transition: transform 0.18s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-trigger:hover,
-.nav-trigger:focus-visible {
+.nav-trigger:focus-visible,
+.nav-trigger:focus {
   transform: scale(1.08);
   outline: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .nav-trigger-bar {
@@ -345,8 +349,8 @@ body {
   pointer-events: auto;
   margin: 0;
   background: rgba(0, 0, 0, 0.55);
-  border-radius: 999px;
-  padding: 8px 20px;
+  border-radius: 16px;
+  padding: 12px 20px;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(8px);
   display: flex;
@@ -370,8 +374,9 @@ body {
 
 .nav-menu {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -404,10 +409,10 @@ body {
   }
 
   .nav-sheet {
-    padding: 6px 16px;
+    padding: 10px 16px;
   }
 
   .nav-menu {
-    gap: 16px;
+    gap: 10px;
   }
 }
