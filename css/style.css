@@ -516,6 +516,24 @@ body {
   opacity: 0.7;
 }
 
+button {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #fafafa;
+  background: #ebe3e3;
+  box-shadow: 3px 3px #fafafa;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
 @media (max-width: 768px) {
   .site-nav {
     top: 12px;
