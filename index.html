@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enhanced viewport meta for better mobile handling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <!-- Additional mobile meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
     <title>Snehal & Karthik</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,9 +172,20 @@
             <feDisplacementMap in="SourceGraphic" scale="7" />
         </filter>
     </svg>
+    <!-- Viewport height fix -->
+    <script src="js/viewport-fix.js"></script>
+
+    <!-- Enhanced scroll solution -->
+    <script src="js/scroll-fix.js"></script>
+
+
+
     <script>
         history.scrollRestoration = "manual";
-        window.onbeforeunload = () => document.querySelector('.page-wrapper').scrollTop = 0;
+        window.onbeforeunload = () => {
+            const pageWrapper = document.querySelector('.page-wrapper');
+            if (pageWrapper) pageWrapper.scrollTop = 0;
+        };
     </script>
     <script src="js/navigation.js"></script>
     <script src="js/memories.js"></script>
