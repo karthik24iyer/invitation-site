@@ -535,6 +535,84 @@ button:active {
   transform: translate(3px, 3px);
 }
 
+/* Family section spacing fix */
+.memories-section#family {
+  margin-bottom: 0;
+  padding-bottom: 40px;
+}
+
+/* Jab We Met section styles */
+.jab-we-met-section {
+  height: auto !important;
+  min-height: 100vh;
+  padding: 60px 20px;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: normal !important;
+  align-items: flex-start !important;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.jab-we-met-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(94vw, 800px);
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+.jab-we-met-title {
+  font-size: 50px;
+  line-height: 54px;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+}
+
+.poem-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.poem-text {
+  font-size: 24px;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 600px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .jab-we-met-title {
+    font-size: 46px;
+    line-height: 48px;
+  }
+
+  .poem-text {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .jab-we-met-section {
+    padding: 40px 16px;
+  }
+
+  .jab-we-met-title {
+    font-size: 42px;
+    line-height: 44px;
+    margin-bottom: 30px;
+  }
+
+  .poem-text {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+}
+
 /* Family toggle switch styles */
 .family-toggle-container {
   display: flex;

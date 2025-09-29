@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
         isGroomSelected = !isGroomSelected;
         toggleSwitch.classList.toggle('active', !isGroomSelected);
         switchFamilyImages(isGroomSelected ? 'groom' : 'bride');
+
+        // Auto-scroll to Jab We Met section after family toggle
+        setTimeout(() => {
+            const jabWeMet = document.getElementById('jab-we-met');
+            if (jabWeMet) {
+                jabWeMet.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 500);
     });
 
     function switchFamilyImages(side) {
