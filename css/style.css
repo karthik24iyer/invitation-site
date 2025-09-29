@@ -121,7 +121,7 @@ body {
     width: 400px;
     height: 400px;
     transform: rotateZ(-40deg);
-    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+
 }
 
 .invitation-frame img {
