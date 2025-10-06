@@ -543,12 +543,15 @@ button:active {
 
 /* Jab We Met section styles */
 .jab-we-met-section {
-  height: auto !important;
+  height: 100vh;
+  height: 100dvh;
+  height: calc(var(--vh) * 100);
   min-height: 100vh;
   padding: 60px 20px;
   scroll-snap-align: start !important;
-  scroll-snap-stop: normal !important;
+  scroll-snap-stop: always !important;
   align-items: flex-start !important;
+  overflow-y: auto;
   margin-top: 0;
   position: relative;
   z-index: 1;
