@@ -173,9 +173,18 @@ body {
     transition: transform 0.3s ease;
 }
 
+.memories-grid:hover .memory-card {
+    opacity: 0.75;
+    transform: translate(var(--memory-shift-x), var(--memory-shift-y)) rotate(var(--memory-tilt)) scale(0.9);
+    transition: all 0.4s ease;
+}
+
 .memory-card:focus-within,
 .memory-card:hover {
-    transform: translate(var(--memory-shift-x), var(--memory-shift-y)) rotate(var(--memory-tilt)) scale(1.02);
+    opacity: 1 !important;
+    transform: translate(var(--memory-shift-x), var(--memory-shift-y)) rotate(var(--memory-tilt)) scale(1.15) !important;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .memory-card::before {
