@@ -16,111 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.logwork.com">
     <link href="https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap" rel="stylesheet">
-    <style>
-        /* Critical CSS - Above the fold styles */
-        :root {
-            --vh: 1vh;
-            --dvh: 1dvh;
-        }
-        body, html {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Seaweed Script', cursive;
-            overflow-x: hidden;
-        }
-        body {
-            overflow: hidden;
-            -webkit-overflow-scrolling: touch;
-        }
-        .page-wrapper {
-            position: relative;
-            height: 100vh;
-            height: 100dvh;
-            height: calc(var(--vh) * 100);
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            z-index: 1;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior: none;
-        }
-        .section {
-            min-height: 100vh;
-            min-height: 100dvh;
-            min-height: calc(var(--vh) * 100);
-            height: 100vh;
-            height: 100dvh;
-            height: calc(var(--vh) * 100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 16px;
-            scroll-snap-align: center;
-            scroll-snap-stop: always;
-            box-sizing: border-box;
-            position: relative;
-            will-change: transform;
-        }
-        .home-background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .home-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            z-index: 2;
-        }
-        .home-title {
-            font-size: 50px;
-            line-height: 64px;
-            margin-bottom: 40px;
-            font-weight: 400;
-            padding-top: 45px;
-        }
-        .home-center-image {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .home-date {
-            font-size: 36px;
-            line-height: 44px;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-        .site-nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .nav-trigger {
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .nav-trigger-bar {
-            width: 20px;
-            height: 2px;
-            background: white;
-            transition: 0.3s;
-        }
-    </style>
     <link rel="stylesheet" href="css/countdown-style.css">
 </head>
 <body>
@@ -158,7 +53,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Mehendi</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic1.jpg" alt="Invitation page 1">
+                    <img src="images/invitation/optimized/pic1.jpg" alt="Invitation page 1" loading="lazy">
                 </div>
             </div>
         </section>
@@ -166,7 +61,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Mayra</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic2.jpg" alt="Invitation page 2">
+                    <img src="images/invitation/optimized/pic2.jpg" alt="Invitation page 2" loading="lazy">
                 </div>
             </div>
         </section>
@@ -174,7 +69,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Nichyadartham</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic3.jpg" alt="Invitation page 3">
+                    <img src="images/invitation/optimized/pic3.jpg" alt="Invitation page 3" loading="lazy">
                 </div>
             </div>
         </section>
@@ -182,7 +77,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Haldi</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic4.jpg" alt="Invitation page 4">
+                    <img src="images/invitation/optimized/pic4.jpg" alt="Invitation page 4" loading="lazy">
                 </div>
             </div>
         </section>
@@ -190,7 +85,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Sangeet</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic5.jpg" alt="Invitation page 5">
+                    <img src="images/invitation/optimized/pic5.jpg" alt="Invitation page 5" loading="lazy">
                 </div>
             </div>
         </section>
@@ -198,7 +93,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Kashi&nbsp;Yatra</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic6.jpg" alt="Invitation page 6">
+                    <img src="images/invitation/optimized/pic6.jpg" alt="Invitation page 6" loading="lazy">
                 </div>
             </div>
         </section>
@@ -206,7 +101,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Kalyanam</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic7.jpg" alt="Invitation page 7">
+                    <img src="images/invitation/optimized/pic7.jpg" alt="Invitation page 7" loading="lazy">
                 </div>
             </div>
         </section>
@@ -214,7 +109,7 @@
             <div class="invitation-content">
                 <h2 class="invitation-title">Reception</h2>
                 <div class="invitation-frame">
-                    <img src="images/invitation/optimized/pic8.jpg" alt="Invitation page 8">
+                    <img src="images/invitation/optimized/pic8.jpg" alt="Invitation page 8" loading="lazy">
                 </div>
             </div>
         </section>
@@ -224,22 +119,22 @@
                 <div class="memories-grid" role="list">
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic1.jpg" alt="Snehal applying mehendi">
+                            <img src="images/gallery/optimized/pic1.jpg" alt="Snehal applying mehendi" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic2.jpg" alt="Karthik playing dhol">
+                            <img src="images/gallery/optimized/pic2.jpg" alt="Karthik playing dhol" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic3.jpg" alt="Snehal and Karthik under lights">
+                            <img src="images/gallery/optimized/pic3.jpg" alt="Snehal and Karthik under lights" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic4.jpg" alt="Friends celebrating together">
+                            <img src="images/gallery/optimized/pic4.jpg" alt="Friends celebrating together" loading="lazy">
                         </div>
                     </figure>
                 </div>
@@ -252,22 +147,22 @@
                 <div class="memories-grid" role="list">
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic5.jpg" alt="Family member 1">
+                            <img src="images/gallery/optimized/pic5.jpg" alt="Family member 1" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic6.jpg" alt="Family member 2">
+                            <img src="images/gallery/optimized/pic6.jpg" alt="Family member 2" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic7.jpg" alt="Family member 3">
+                            <img src="images/gallery/optimized/pic7.jpg" alt="Family member 3" loading="lazy">
                         </div>
                     </figure>
                     <figure class="memory-card" role="listitem" data-memory-card>
                         <div class="memory-image">
-                            <img src="images/gallery/optimized/pic8.jpg" alt="Family member 4">
+                            <img src="images/gallery/optimized/pic8.jpg" alt="Family member 4" loading="lazy">
                         </div>
                     </figure>
                 </div>
