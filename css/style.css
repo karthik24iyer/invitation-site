@@ -537,6 +537,7 @@ button {
   box-shadow: 3px 3px #fafafa;
   cursor: pointer;
   margin: 5px 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:active {
