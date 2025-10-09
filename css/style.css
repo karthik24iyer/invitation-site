@@ -79,7 +79,7 @@ body {
     line-height: 64px;
     margin-bottom: 40px;
     font-weight: 400;
-    padding-top: 75px;
+    padding-top: 65px;
 }
 
 .invitation-title {
@@ -734,7 +734,7 @@ button:active {
 /* Scroll arrow styles */
 .scroll-arrow {
   position: absolute;
-  bottom: 40px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
