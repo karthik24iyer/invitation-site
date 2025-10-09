@@ -25,6 +25,13 @@
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Background Refresh Button -->
+    <button class="refresh-trigger nav-trigger" type="button" aria-label="Change background">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 10C21 10 18.995 7.26822 17.3662 5.63824C15.7373 4.00827 13.4864 3 11 3C6.02944 3 2 7.02944 2 12C2 16.9706 6.02944 21 11 21C15.1031 21 18.5649 18.2543 19.6482 14.5M21 10V4M21 10H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
     <nav class="site-nav" role="navigation">
         <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
             <span class="nav-trigger-bar"></span>
@@ -313,6 +320,27 @@
             if (invitationSection) {
                 invitationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+        });
+    </script>
+
+    <!-- Background Refresh Handler -->
+    <script>
+        const refreshButton = document.querySelector('.refresh-trigger');
+        const backgroundImage = document.querySelector('.home-background-image');
+
+        refreshButton.addEventListener('click', function() {
+            // Add spinning animation
+            refreshButton.classList.add('spinning');
+
+            // Toggle background
+            if (backgroundImage.src.includes('background.jpg')) {
+                backgroundImage.src = 'images/background-alt.jpg';
+            } else {
+                backgroundImage.src = 'images/background.jpg';
+            }
+
+            // Remove spinning class after animation
+            setTimeout(() => refreshButton.classList.remove('spinning'), 500);
         });
     </script>
 
