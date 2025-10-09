@@ -113,6 +113,17 @@ body {
     backface-visibility: hidden;
 }
 
+@media (min-width: 769px) {
+    .invitation-title {
+        margin-bottom: 32px;
+    }
+
+    .invitation-frame,
+    .letter-frame-wrapper {
+        margin-top: 20px;
+    }
+}
+
 .invitation-frame::before {
     content: "";
     position: absolute;
@@ -853,6 +864,16 @@ button:active {
   margin: 14px 0 0 0;
   line-height: 1.4;
   font-style: italic;
+}
+
+@media (min-width: 1024px) {
+  .letter-frame-wrapper {
+    height: min(85vh, 860px);
+  }
+
+  .letter-frame-wrapper img {
+    object-position: center;
+  }
 }
 
 @media (max-width: 768px) {
