@@ -79,7 +79,7 @@ body {
     line-height: 64px;
     margin-bottom: 40px;
     font-weight: 400;
-    padding-top: 45px;
+    padding-top: 75px;
 }
 
 .invitation-title {
@@ -410,11 +410,27 @@ body {
 
 
 /* Refresh Button */
-.refresh-trigger {
+.refresh-btn {
   position: fixed;
   top: max(16px, env(safe-area-inset-top, 16px));
   left: max(16px, env(safe-area-inset-left, 16px));
   z-index: 2000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
 }
 
 @keyframes spin {
@@ -422,7 +438,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.refresh-trigger.spinning {
+.refresh-btn.spinning {
   animation: spin 0.5s ease-in-out;
 }
 
@@ -688,9 +704,11 @@ button:active {
 }
 
 @media (max-width: 768px) {
-  .refresh-trigger {
+  .refresh-btn {
     top: max(12px, env(safe-area-inset-top, 12px));
     left: max(12px, env(safe-area-inset-left, 12px));
+    width: 40px;
+    height: 40px;
   }
 
   .site-nav {
