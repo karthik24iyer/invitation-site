@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="css/countdown-style.css">
 </head>
 <body>
+    <!-- Background Music Player -->
+    <audio id="background-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <nav class="site-nav" role="navigation">
         <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
             <span class="nav-trigger-bar"></span>
@@ -46,7 +52,12 @@
 					<script src="https://cdn.logwork.com/widget/countdown.js"></script>
 					<a href="https://logwork.com/countdown-timer" class="countdown-timer" data-timezone="Asia/Kolkata" data-date="2025-11-23 08:00">&nbsp;</a>
 				</div>
-                <div class="home-quote">Love is not an emotion,<br/>but a deep and pure expression of the soul”<br/>- Bhagavad Gita 2 .64</div>
+                <div class="home-quote">Love is not an emotion,<br/>but a deep and pure expression of the soul"<br/>- Bhagavad Gita 2 .64</div>
+            </div>
+            <div id="scroll-arrow" class="scroll-arrow">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 25 L30 40 L45 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
         </section>
         <section class="invitation-section section" id="mehendi">
@@ -238,7 +249,33 @@
     <!-- Viewport height fix -->
     <script src="js/viewport-fix.js" defer></script>
 
+    <!-- Background Music Handler -->
+    <script>
+        const music = document.getElementById('background-music');
 
+        function playMusic() {
+            music.play().then(() => {
+                console.log('Music playing');
+                document.removeEventListener('click', playMusic);
+                document.removeEventListener('touchstart', playMusic);
+            }).catch(() => {});
+        }
+
+        document.addEventListener('click', playMusic);
+        document.addEventListener('touchstart', playMusic);
+    </script>
+
+    <!-- Scroll Arrow Handler -->
+    <script>
+        const scrollArrow = document.getElementById('scroll-arrow');
+
+        scrollArrow.addEventListener('click', function() {
+            const invitationSection = document.getElementById('mehendi');
+            if (invitationSection) {
+                invitationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
 
     <script>
         history.scrollRestoration = "manual";
