@@ -433,8 +433,8 @@ body {
 }
 
 .zoom-btn {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   margin: 0;
@@ -452,7 +452,7 @@ body {
 }
 
 .zoom-btn:hover {
-  transform: scale(1.08);
+  transform: none;
 }
 
 .zoom-btn:active {
@@ -475,8 +475,8 @@ body {
   }
 
   .zoom-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 }
 
