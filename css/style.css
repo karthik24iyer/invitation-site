@@ -453,6 +453,66 @@ body {
   animation: spin 0.5s ease-in-out;
 }
 
+/* Zoom Controls */
+.zoom-controls {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  right: max(16px, env(safe-area-inset-right, 16px));
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.zoom-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.zoom-btn:hover {
+  transform: scale(1.08);
+}
+
+.zoom-btn:active {
+  transform: scale(0.95);
+}
+
+.zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.zoom-btn:disabled:hover {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .zoom-controls {
+    bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    right: max(12px, env(safe-area-inset-right, 12px));
+  }
+
+  .zoom-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .site-nav {
   position: fixed;
   top: 16px;

@@ -49,6 +49,21 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Zoom Controls -->
+    <div class="zoom-controls">
+        <button class="zoom-btn zoom-out" type="button" aria-label="Zoom out">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="zoom-btn zoom-in" type="button" aria-label="Zoom in">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
     <img class="home-background-image" src="images/background.jpg" alt="background">
     <main class="page-wrapper">
         <section class="home-section section" id="home">
@@ -353,5 +368,49 @@
     </script>
     <script src="js/navigation.js" defer></script>
     <script src="js/memories.js" defer></script>
+
+    <!-- Zoom Controls Handler -->
+    <script>
+        (function() {
+            const ZOOM_KEY = 'site-zoom-level';
+            const MIN_ZOOM = 0.7;
+            const MAX_ZOOM = 1.3;
+            const ZOOM_STEP = 0.1;
+
+            let currentZoom = parseFloat(localStorage.getItem(ZOOM_KEY)) || 1.0;
+
+            const pageWrapper = document.querySelector('.page-wrapper');
+            const zoomInBtn = document.querySelector('.zoom-in');
+            const zoomOutBtn = document.querySelector('.zoom-out');
+
+            function applyZoom(zoom) {
+                currentZoom = Math.round(zoom * 10) / 10; // Round to 1 decimal
+                pageWrapper.style.transform = `scale(${currentZoom})`;
+                pageWrapper.style.transformOrigin = 'top center';
+                localStorage.setItem(ZOOM_KEY, currentZoom);
+
+                // Update button states
+                zoomOutBtn.disabled = currentZoom <= MIN_ZOOM;
+                zoomInBtn.disabled = currentZoom >= MAX_ZOOM;
+            }
+
+            // Apply saved zoom on load
+            applyZoom(currentZoom);
+
+            // Zoom in
+            zoomInBtn.addEventListener('click', () => {
+                if (currentZoom < MAX_ZOOM) {
+                    applyZoom(currentZoom + ZOOM_STEP);
+                }
+            });
+
+            // Zoom out
+            zoomOutBtn.addEventListener('click', () => {
+                if (currentZoom > MIN_ZOOM) {
+                    applyZoom(currentZoom - ZOOM_STEP);
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
