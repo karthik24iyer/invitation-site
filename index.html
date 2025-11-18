@@ -454,8 +454,8 @@
                 // Set title
                 modalTitle.textContent = config.title;
 
-                // Set iframe source
-                modalIframe.src = `https://drive.google.com/embeddedfolderview?id=${config.id}#grid`;
+                // Set iframe source with view parameters
+                modalIframe.src = `https://drive.google.com/embeddedfolderview?id=${config.id}&view=photo#grid`;
 
                 // Store upload URL
                 currentUploadUrl = config.uploadUrl;
@@ -492,10 +492,43 @@
             // Back button handler
             backBtn.addEventListener('click', closeModal);
 
+            // Function to open Drive app with fallback to web
+            function openDriveApp(folderId, webUrl) {
+                const isAndroid = /Android/i.test(navigator.userAgent);
+                const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+                if (isAndroid) {
+                    // Try Android Drive app intent
+                    const intentUrl = `intent://drive.google.com/drive/folders/${folderId}#Intent;scheme=https;package=com.google.android.apps.docs;end`;
+                    window.location.href = intentUrl;
+                } else if (isIOS) {
+                    // Try iOS Drive app scheme, then fallback to web
+                    const driveAppUrl = `googledrive://folder?id=${folderId}`;
+                    window.location.href = driveAppUrl;
+
+                    // Fallback to web if app doesn't open
+                    setTimeout(() => {
+                        window.location.href = webUrl;
+                    }, 1000);
+                } else {
+                    // Desktop or unknown - open web
+                    window.open(webUrl, '_blank');
+                }
+            }
+
             // Upload button handler
             uploadBtn.addEventListener('click', () => {
                 if (currentUploadUrl) {
-                    window.open(currentUploadUrl, '_blank');
+                    // Extract folder ID from current config
+                    const folderId = Object.values(folderConfig).find(
+                        config => config.uploadUrl === currentUploadUrl
+                    )?.id;
+
+                    if (folderId) {
+                        openDriveApp(folderId, currentUploadUrl);
+                    } else {
+                        window.open(currentUploadUrl, '_blank');
+                    }
                 }
             });
 

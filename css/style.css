@@ -658,7 +658,9 @@ body {
 @media (max-width: 768px) {
   .gallery-modal-content {
     width: 96vw;
-    height: 94vh;
+    height: 94vh; /* Fallback */
+    height: 94dvh; /* Dynamic viewport height */
+    height: calc(var(--vh) * 94); /* JavaScript-calculated viewport */
     border-radius: 16px;
   }
 
@@ -687,7 +689,9 @@ body {
 @media (max-width: 480px) {
   .gallery-modal-content {
     width: 100vw;
-    height: 100vh;
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height */
+    height: calc(var(--vh) * 100); /* JavaScript-calculated viewport - accounts for browser chrome */
     border-radius: 0;
     max-width: none;
     max-height: none;
