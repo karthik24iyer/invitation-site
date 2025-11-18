@@ -507,18 +507,13 @@
                 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
                 if (isAndroid) {
-                    // Try Android Drive app intent
+                    // Android: Use intent URL to open Drive app
                     const intentUrl = `intent://drive.google.com/drive/folders/${folderId}#Intent;scheme=https;package=com.google.android.apps.docs;end`;
                     window.location.href = intentUrl;
                 } else if (isIOS) {
-                    // Try iOS Drive app scheme, then fallback to web
-                    const driveAppUrl = `googledrive://folder?id=${folderId}`;
-                    window.location.href = driveAppUrl;
-
-                    // Fallback to web if app doesn't open
-                    setTimeout(() => {
-                        window.location.href = webUrl;
-                    }, 1000);
+                    // iOS: Use regular HTTPS URL - iOS will open in Drive app automatically
+                    // Universal Links work better than URL schemes on iOS
+                    window.location.href = webUrl;
                 } else {
                     // Desktop or unknown - open web
                     window.open(webUrl, '_blank');
