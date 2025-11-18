@@ -494,6 +494,25 @@ body {
   z-index: 1;
 }
 
+.folder-button-small {
+  width: 75%;
+  min-height: 60px;
+  padding: 15px 18px;
+  font-size: 24px;
+  box-shadow: 3px 3px 0px #2a2a2a;
+}
+
+.folder-button-small:hover {
+  box-shadow: 4.5px 4.5px 0px #2a2a2a;
+}
+
+.folder-button-small .folder-icon {
+  width: 24px;
+  height: 24px;
+  top: 9px;
+  right: 9px;
+}
+
 @media (max-width: 768px) {
   .gallery-title {
     font-size: 46px;
@@ -511,6 +530,19 @@ body {
     height: 28px;
     top: 10px;
     right: 10px;
+  }
+
+  .folder-button-small {
+    min-height: 52px;
+    font-size: 21px;
+    padding: 13px 15px;
+  }
+
+  .folder-button-small .folder-icon {
+    width: 21px;
+    height: 21px;
+    top: 7px;
+    right: 7px;
   }
 }
 
@@ -540,6 +572,19 @@ body {
     height: 24px;
     top: 8px;
     right: 8px;
+  }
+
+  .folder-button-small {
+    min-height: 45px;
+    font-size: 18px;
+    padding: 12px 13px;
+  }
+
+  .folder-button-small .folder-icon {
+    width: 18px;
+    height: 18px;
+    top: 6px;
+    right: 6px;
   }
 }
 
