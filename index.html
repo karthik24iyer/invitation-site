@@ -81,6 +81,10 @@
             <div class="gallery-content">
                 <h2 class="gallery-title">Gallery</h2>
                 <div class="gallery-folders">
+                    <button class="folder-button" data-folder="engagement">
+                        <span class="folder-label">Engagement</span>
+                        <span class="folder-icon"></span>
+                    </button>
                     <button class="folder-button" data-folder="21st">
                         <span class="folder-label">21st</span>
                         <span class="folder-icon"></span>
@@ -422,6 +426,11 @@
 
             // Google Drive folder IDs and configurations
             const folderConfig = {
+                'engagement': {
+                    id: '1RFoTZoTA2vLiJCBRz9uGpNwbShqEu4F3',
+                    title: 'Engagement',
+                    uploadUrl: 'https://drive.google.com/drive/folders/1RFoTZoTA2vLiJCBRz9uGpNwbShqEu4F3'
+                },
                 '21st': {
                     id: '1L2-LuA-YFyJGKz7w1dzC7Fw0_-lRD0aX',
                     title: '21st Nov',
