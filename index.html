@@ -385,5 +385,130 @@
             });
         })();
     </script>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="gallery-modal" hidden>
+        <div class="gallery-modal-overlay"></div>
+        <div class="gallery-modal-content">
+            <div class="gallery-modal-header">
+                <button class="gallery-back-btn" type="button" aria-label="Go back">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h2 class="gallery-modal-title" id="gallery-modal-title">Gallery</h2>
+                <button class="gallery-upload-btn" type="button" aria-label="Upload photos">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="gallery-modal-body">
+                <iframe id="gallery-iframe" class="gallery-iframe" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal Script -->
+    <script>
+        (function() {
+            const modal = document.getElementById('gallery-modal');
+            const modalTitle = document.getElementById('gallery-modal-title');
+            const modalIframe = document.getElementById('gallery-iframe');
+            const backBtn = document.querySelector('.gallery-back-btn');
+            const uploadBtn = document.querySelector('.gallery-upload-btn');
+            const overlay = document.querySelector('.gallery-modal-overlay');
+            const folderButtons = document.querySelectorAll('.folder-button');
+
+            // Google Drive folder IDs and configurations
+            const folderConfig = {
+                '21st': {
+                    id: '1L2-LuA-YFyJGKz7w1dzC7Fw0_-lRD0aX',
+                    title: '21st Nov',
+                    uploadUrl: 'https://drive.google.com/drive/folders/1L2-LuA-YFyJGKz7w1dzC7Fw0_-lRD0aX?usp=sharing'
+                },
+                '22nd': {
+                    id: '1emrXadODFSkbzmmkf-j6NRu0S8zL1G8Z',
+                    title: '22nd Nov',
+                    uploadUrl: 'https://drive.google.com/drive/folders/1emrXadODFSkbzmmkf-j6NRu0S8zL1G8Z?usp=drive_link'
+                },
+                '23rd': {
+                    id: '1UboeiVovBHoU-UvqnfdeXiJUStAcupuM',
+                    title: '23rd Nov',
+                    uploadUrl: 'https://drive.google.com/drive/folders/1UboeiVovBHoU-UvqnfdeXiJUStAcupuM?usp=sharing'
+                },
+                'misc': {
+                    id: '17WgtkCSym-46Ubf_mAAcJxwIWeet44bH',
+                    title: 'Misc',
+                    uploadUrl: 'https://drive.google.com/drive/folders/17WgtkCSym-46Ubf_mAAcJxwIWeet44bH?usp=drive_link'
+                }
+            };
+
+            let currentUploadUrl = '';
+
+            // Open modal function
+            function openModal(folderKey) {
+                const config = folderConfig[folderKey];
+                if (!config) return;
+
+                // Set title
+                modalTitle.textContent = config.title;
+
+                // Set iframe source
+                modalIframe.src = `https://drive.google.com/embeddedfolderview?id=${config.id}#grid`;
+
+                // Store upload URL
+                currentUploadUrl = config.uploadUrl;
+
+                // Show modal
+                modal.hidden = false;
+                document.body.style.overflow = 'hidden';
+
+                // Trigger animation
+                setTimeout(() => {
+                    modal.classList.add('is-open');
+                }, 10);
+            }
+
+            // Close modal function
+            function closeModal() {
+                modal.classList.remove('is-open');
+                document.body.style.overflow = '';
+
+                setTimeout(() => {
+                    modal.hidden = true;
+                    modalIframe.src = '';
+                }, 300);
+            }
+
+            // Add click handlers to folder buttons
+            folderButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const folderKey = button.getAttribute('data-folder');
+                    openModal(folderKey);
+                });
+            });
+
+            // Back button handler
+            backBtn.addEventListener('click', closeModal);
+
+            // Upload button handler
+            uploadBtn.addEventListener('click', () => {
+                if (currentUploadUrl) {
+                    window.open(currentUploadUrl, '_blank');
+                }
+            });
+
+            // Close on overlay click
+            overlay.addEventListener('click', closeModal);
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.hidden) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
