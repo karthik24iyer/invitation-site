@@ -26,11 +26,22 @@
     </audio>
 
     <nav class="site-nav" role="navigation">
-        <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-            <span class="nav-trigger-bar"></span>
-            <span class="nav-trigger-bar"></span>
-            <span class="nav-trigger-bar"></span>
-        </button>
+        <div class="nav-buttons">
+            <button class="music-control" type="button" aria-label="Toggle music" id="music-control">
+                <svg class="music-icon music-playing" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18V5L21 3V16M9 18C9 19.6569 7.65685 21 6 21C4.34315 21 3 19.6569 3 18C3 16.3431 4.34315 15 6 15C7.65685 15 9 16.3431 9 18ZM21 16C21 17.6569 19.6569 19 18 19C16.3431 19 15 17.6569 15 16C15 14.3431 16.3431 13 18 13C19.6569 13 21 14.3431 21 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="music-icon music-paused" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" hidden>
+                    <path d="M9 18V5L21 3V16M9 18C9 19.6569 7.65685 21 6 21C4.34315 21 3 19.6569 3 18C3 16.3431 4.34315 15 6 15C7.65685 15 9 16.3431 9 18ZM21 16C21 17.6569 19.6569 19 18 19C16.3431 19 15 17.6569 15 16C15 14.3431 16.3431 13 18 13C19.6569 13 21 14.3431 21 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="3" y1="21" x2="21" y2="3" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+                <span class="nav-trigger-bar"></span>
+                <span class="nav-trigger-bar"></span>
+                <span class="nav-trigger-bar"></span>
+            </button>
+        </div>
         <div id="nav-menu" class="nav-sheet" hidden>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -310,18 +321,29 @@
 
     <!-- Background Music Handler -->
     <script>
-        const music = document.getElementById('background-music');
+        document.addEventListener('DOMContentLoaded', () => {
+            const music = document.getElementById('background-music');
+            const musicControl = document.getElementById('music-control');
+            const playingIcon = document.querySelector('.music-playing');
+            const pausedIcon = document.querySelector('.music-paused');
 
-        function playMusic() {
-            music.play().then(() => {
-                console.log('Music playing');
-                document.removeEventListener('click', playMusic);
-                document.removeEventListener('touchstart', playMusic);
-            }).catch(() => {});
-        }
+            // Initialize - show paused icon
+            playingIcon.style.display = 'none';
+            pausedIcon.style.display = 'block';
 
-        document.addEventListener('click', playMusic);
-        document.addEventListener('touchstart', playMusic);
+            // Toggle music on button click
+            musicControl.addEventListener('click', () => {
+                if (music.paused) {
+                    music.play();
+                    playingIcon.style.display = 'block';
+                    pausedIcon.style.display = 'none';
+                } else {
+                    music.pause();
+                    playingIcon.style.display = 'none';
+                    pausedIcon.style.display = 'block';
+                }
+            });
+        });
     </script>
 
     <!-- Scroll Arrow Handler -->

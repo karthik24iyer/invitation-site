@@ -804,6 +804,46 @@ body:has(.gallery-modal:not([hidden])) {
   right: max(16px, env(safe-area-inset-right, 16px));
 }
 
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.music-control {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  transition: transform 0.18s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.music-control:hover,
+.music-control:focus-visible,
+.music-control:focus {
+  transform: scale(1.08);
+  outline: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.music-icon {
+  position: absolute;
+}
+
 .nav-trigger {
   pointer-events: auto;
   width: 44px;
@@ -1055,6 +1095,15 @@ button:active {
     top: 12px;
     right: 12px;
     gap: 6px;
+  }
+
+  .nav-buttons {
+    gap: 6px;
+  }
+
+  .music-control {
+    width: 40px;
+    height: 40px;
   }
 
   .nav-trigger {
