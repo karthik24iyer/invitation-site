@@ -556,6 +556,10 @@ body {
   pointer-events: none;
 }
 
+.gallery-modal[hidden] {
+  display: none;
+}
+
 .gallery-modal.is-open {
   opacity: 1;
   pointer-events: auto;
